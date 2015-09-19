@@ -7,6 +7,7 @@
 
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
+var Bar = require('../api/bar/bar.model');
 
 Thing.find({}).removeAsync()
   .then(function() {
@@ -58,3 +59,9 @@ User.find({}).removeAsync()
       console.log('finished populating users');
     });
   });
+
+
+Bar.find({}).removeAsync()
+    .then(function() {
+      console.log('finished removing bars');
+    });

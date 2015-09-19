@@ -2,21 +2,52 @@
 
 <header class="hero-unit" id="banner">
   <div class="container">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
+    <h1>Where I go??</h1>
   </div>
 </header>
+
+
 
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
-        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}</a></li>
-      </ul>
+      <h1 class="page-header"></h1>
+      <form class="form-inline" name="giveMeBarsForm" ng-submit="giveMeBarsForm.$valid && searchBars()" novalidate>
+        <input type="text" ng-model="giveMeBarsForm.location" class="form-control" placeholder="Write a location" required>
+        <button type="submit" class="btn btn-primary" ng-disabled="giveMeBarsForm.$invalid">Where I go !?!?</button>
+      </form>
+      <div ng-show="errorMsg" class="alert alert-danger" role="alert">Oops!! {{ errorMsg }}</div>
+    </div>
+  </div>
+
+
+  <div class="row grid" ng-show="bars" >
+    <div class="col-sm-6 col-md-4 grid-item" ng-repeat="bar in bars.businesses" id="{{ bar.id }}" on-last-repeat>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h2 class="panel-title">{{ bar.name }} <span class="pull-right"><img ng-src="{{ bar.rating_img_url }}" alt="rating img" /></span></h2>
+        </div>
+        <div class="panel-body">
+          <img ng-src="{{ bar.image_url }}" alt="bar img" class="img-thumbnail" />
+          
+          <button class="btn btn-default btn-lg pull-right" ng-click="addPersonToBar(bar)" ng-disabled="!isLoggedIn() || isCurrentUserInThisBar(bar.usersIn)">
+            {{ bar.usersIn.length ? bar.usersIn.length : 0 }} going <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+          </button> 
+          <pre>{{ isCurrentUserInThisBar(bar.usersIn) }}</pre>
+
+
+          <blockquote class="blockquote-reverse"z>
+            <img  ng-src="{{ bar.snippet_image_url }}" alt="snippet img" class="pull-left img-circle"/>
+            <p>{{ bar.snippet_text }}
+            <a href="{{ bar.url }}">See {{ bar.review_count }} more opinions</a></p>
+          </blockquote>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+
+
 
 <footer></footer>
