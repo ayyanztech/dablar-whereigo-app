@@ -20,7 +20,7 @@
         </div>
         <div class="panel-body">
           <img ng-src="{{ bar.image_url }}" alt="bar img" class="img-thumbnail" />
-          <button id="btn{{bar.id}}" class="btn btn-default btn-lg pull-right" ng-click="addOrRemovePersonToBar(bar, $event)" ng-disabled="!isLoggedIn() || isProcessing">
+          <button id="btn{{bar.id}}" class="btn btn-default btn-lg pull-right" ng-click="addOrRemovePersonToBar(bar)" ng-disabled="!isLoggedIn() || isProcessing">
             {{ bar.usersIn.length ? bar.usersIn.length : 0 }} going 
             <span ng-hide="isCurrentUserInThisBar(bar.usersIn)" class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             <span ng-show="isCurrentUserInThisBar(bar.usersIn)" class="glyphicon glyphicon-minus" aria-hidden="true"></span>
@@ -35,8 +35,5 @@
     </div>
   </div>
 </div>
-
-
-
 
 <footer></footer>
