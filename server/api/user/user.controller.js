@@ -132,3 +132,18 @@ exports.me = function(req, res, next) {
 exports.authCallback = function(req, res, next) {
   res.redirect('/');
 };
+
+/**
+ * Change the lastLocation searched
+ */
+exports.updateLocation = function(req, res, next) {
+  User.findByIdAsync(req.params.id)
+    .then(function(user) {
+      user.lastLocation = req.body.lastLocation;
+      return user.saveAsync()
+        .then(function() {
+          res.status(204).end();
+        })
+        .catch(validationError(res));
+    });
+};
