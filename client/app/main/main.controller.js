@@ -6,6 +6,7 @@ angular.module('dablarWhereigoAppApp')
     $scope.errorMsg = '';
     var $grid; // masonry variable
 
+    console.log(Auth.getCurrentUser());
     //searhcing for the last user location
     if (Auth.getCurrentUser() && Auth.getCurrentUser().lastLocation) {
       console.log('Searching in last location user searched: ' + Auth.getCurrentUser().lastLocation);
@@ -45,7 +46,9 @@ angular.module('dablarWhereigoAppApp')
 
         //if user is logged, save the location searched
         if (Auth.getCurrentUser() && Auth.getCurrentUser().lastLocation) {
-          $http.put('/api/users/' + $scope.getCurrentUser()._id + '/location', {lastLocation: $scope.giveMeBarsForm.location});
+          $http.put('/api/users/' + $scope.getCurrentUser()._id + '/location', {lastLocation: $scope.giveMeBarsForm.location}).success( function(userUpdated) {
+            console.log('user location updated to: ' + userUpdated.lastLocation);
+          });
         }
       }).error(function(err) {
         console.log(err);
