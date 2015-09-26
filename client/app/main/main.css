@@ -3,10 +3,6 @@
   src: url('/assets/fonts/Rodina-Regular.otf');
 }
 
-h1{
-
-}
-
 body {
     background-color: #fff;
     color: #333;
@@ -141,4 +137,3 @@ body {
 .bars-container {
   margin-top: 10px;
 }
-

@@ -2,9 +2,17 @@
 
 This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 3.0.0-rc3.
 
+Excercise from: [Freecodecamp basejump: Build a Nightlife Coordination App](http://www.freecodecamp.com/challenges/basejump-build-a-nightlife-coordination-app)
+
+[Heroku app running](http://dablar-whereigo-app.herokuapp.com/)
+
+
+Used Yepl Api for searching locals
+
 Used Mansory library for present panels [using a final callback after ng-repeat](http://www.nodewiz.biz/angular-js-final-callback-after-ng-repeat/) to do it.
 
 Used [imagesLoaded](http://imagesloaded.desandro.com/) to fix a Mansory overlapping issue.
+
 
 ## Getting Started
 

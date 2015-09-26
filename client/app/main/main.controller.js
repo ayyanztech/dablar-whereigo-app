@@ -6,7 +6,6 @@ angular.module('dablarWhereigoAppApp')
     $scope.errorMsg = '';
     var $grid; // masonry variable
 
-    console.log(Auth.getCurrentUser());
     //searhcing for the last user location
     if (Auth.getCurrentUser() && Auth.getCurrentUser().lastLocation) {
       console.log('Searching in last location user searched: ' + Auth.getCurrentUser().lastLocation);
@@ -22,7 +21,7 @@ angular.module('dablarWhereigoAppApp')
     }
 
    
-    $scope.$on('onRepeatLast', function(scope, element, attrs) {
+    $scope.$on('onRepeatLast', function(  ) {
       $grid.masonry('reloadItems'); 
 
       $grid.imagesLoaded().progress( function() {
@@ -45,9 +44,9 @@ angular.module('dablarWhereigoAppApp')
         $scope.isProcessing = false;
 
         //if user is logged, save the location searched
-        if (Auth.getCurrentUser() && Auth.getCurrentUser().lastLocation) {
-          $http.put('/api/users/' + $scope.getCurrentUser()._id + '/location', {lastLocation: $scope.giveMeBarsForm.location}).success( function(userUpdated) {
-            console.log('user location updated to: ' + userUpdated.lastLocation);
+        if (Auth.getCurrentUser() &&  $scope.getCurrentUser()._id) {
+          $http.put('/api/users/' + $scope.getCurrentUser()._id + '/location', 
+              {lastLocation: $scope.giveMeBarsForm.location}).success( function(userUpdated) {
           });
         }
       }).error(function(err) {
@@ -123,7 +122,7 @@ angular.module('dablarWhereigoAppApp')
       }
     };
 
-    $scope.isCurrentUserInThisBar = function (usersIn) { //console.log(usersIn);
+    $scope.isCurrentUserInThisBar = function (usersIn) {
       if (!usersIn || usersIn.length <= 0) {
         return false;
       }
